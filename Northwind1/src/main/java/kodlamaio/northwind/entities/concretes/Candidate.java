@@ -56,6 +56,9 @@ public class Candidate extends User{
 	
 	@Column(name="linkedin_adress")
 	private String linkedin;
+	
+	@Column(name="cover_letter")
+	private String coverLetter;
 
 	
 	

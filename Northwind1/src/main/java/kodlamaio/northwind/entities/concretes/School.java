@@ -1,5 +1,6 @@
 package kodlamaio.northwind.entities.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,8 +35,14 @@ public class School {
 	@Column(name="is_graduate")
 	private boolean is_graduate;
 	
+	@Column(name="date_of_entry")
+	private LocalDate dateOfEntry;
+	
+	@Column(name="date_of_graduation")
+	private LocalDate dateOfGraduation;
+	
 	
 	@OneToMany(mappedBy = "school")
-	private List<SchoolDepartment> schoolDepartment;
+	private List<SchoolDepartment> schoolDepartments;
 
 }

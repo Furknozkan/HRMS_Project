@@ -41,10 +41,4 @@ public class ExperiencesControllers {
 	public DataResult<List<Experiences>> getAllSorted(){
 		return this.experiencesService.getAllSorted();
 	}
-	
-	
-	@PostMapping("/add")
-	public Result add(@RequestBody Experiences experiences) {
-		return this.experiencesService.add(experiences);
-	}
 }
