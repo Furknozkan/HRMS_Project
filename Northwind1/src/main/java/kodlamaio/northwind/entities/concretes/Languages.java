@@ -32,8 +32,8 @@ public class Languages {
 	private String level;
 	
 	@ManyToOne()
-	@JoinColumn(name="candidate_id")
-	private Candidate candidate;
+	@JoinColumn(name="candidate_cv_id")
+	private CandidateCv candidateCv;
 	
 
 }

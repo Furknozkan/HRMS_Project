@@ -13,6 +13,7 @@ import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.entities.concretes.Candidate;
 
+
 @RestController
 @RequestMapping("/api/candidate")
 public class CandidateControllers {
@@ -31,10 +32,14 @@ public class CandidateControllers {
 		return this.candidateService.getAll();
 		
 	}
+	
+
+	
 	@PostMapping("/add")
 	public Result add(@RequestBody Candidate candidate) {
 		return this. candidateService.add(candidate);
 	}
+	
 	
 
 

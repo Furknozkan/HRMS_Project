@@ -2,6 +2,8 @@ package kodlamaio.northwind.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -24,5 +26,6 @@ public class Employee extends User{
 	
 	@Column(name="last_name")
 	private String lastName;
+	
 
 }

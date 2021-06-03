@@ -6,4 +6,5 @@ import kodlamaio.northwind.entities.concretes.School;
 
 public interface SchoolDao extends JpaRepository<School, Integer>{
 	
+	
 }
