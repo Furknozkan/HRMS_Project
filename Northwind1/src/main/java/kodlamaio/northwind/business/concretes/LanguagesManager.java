@@ -41,4 +41,12 @@ public class LanguagesManager implements LanguagesService{
 		return new SuccessResult("languages eklendi");
 	}
 
+
+
+	@Override
+	public DataResult<List<Languages>> getByCandidate_id(int candidate_id) {
+		List<Languages> result =  this.languagesDao.getByCandidate_id(candidate_id);
+		return new SuccessDataResult<List<Languages>>(result);
+	}
+
 }

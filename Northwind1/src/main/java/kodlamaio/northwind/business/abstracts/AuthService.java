@@ -13,5 +13,6 @@ public interface AuthService {
 	Result DepartmentAdd(DepartmentAddDto departmentDto );
 	
 	
+	
 
 }

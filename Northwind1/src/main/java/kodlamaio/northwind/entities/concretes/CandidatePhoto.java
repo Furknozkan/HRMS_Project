@@ -1,6 +1,6 @@
 package kodlamaio.northwind.entities.concretes;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,13 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,30 +21,23 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="departments")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","schoolDepartments"})
-public class Department {
+@Table(name="candidate_photos")
+public class CandidatePhoto {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="department_id")
-	private int departmentId;
+	@Column(name="photo_id")
+	private int photoId;
+
+	@Column(name="photo_url")
+	private String phototUrl;
 	
-	@Column(name="department_name")
-	private String departmentName;
-
-
-	@OneToMany(mappedBy = "department")
-	private List<SchoolDepartment> schoolDepartments;
+	@Column(name="uploated_date")
+	private LocalDate uploatedDate;
 	
 	@JsonIgnore
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="candidate_id")
 	private Candidate candidate;
-	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="candidate_cv_id")
-	private CandidateCv candidateCv;
-	
 	
 }

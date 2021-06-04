@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.northwind.business.abstracts.CandidateCvService;
@@ -24,10 +25,14 @@ public class CandidateCvControllers {
 		super();
 		this.candidateCvService = candidateCvService;
 	}
-	
 	@GetMapping("/getall")
 	public DataResult<List<CandidateCv>> getAll(){
-		return this.candidateCvService.getAll();
+		return this.candidateCvService.getAll(); 
+	}
+	
+	@GetMapping("/getByCandidate_id")
+	public DataResult<List<CandidateCv>> getByCandidate_id(@RequestParam int candidate){
+		return this.candidateCvService.getByCandidate_id(candidate);
 	}
 	
 	

@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,8 +38,11 @@ public class CandidateSchoolDepartment {
 	@JoinColumn(name="school_department_id")
 	private SchoolDepartment schoolDepartment;
 	
+    @JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="candidate_cv_id")
+	@JoinColumn(name="candidate_id")
 	private Candidate candidate;
 
+	
+	
 }

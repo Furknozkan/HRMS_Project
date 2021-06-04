@@ -24,16 +24,19 @@ public class CandidateCvManager implements CandidateCvService{
 		this.candidateCvDao = candidateCvDao;
 	}
 
+
+	@Override
+	public DataResult<List<CandidateCv>> getByCandidate_id(int candidate) {
+		List<CandidateCv> candidateCv = this.candidateCvDao.getByCandidate_id(candidate);
+		return new SuccessDataResult<List<CandidateCv>>(candidateCv);
+		
+	}
+
+
 	@Override
 	public DataResult<List<CandidateCv>> getAll() {
-		return new SuccessDataResult<List<CandidateCv>>(this.candidateCvDao.findAll(),"data listelendi");
+		List<CandidateCv> candidateCv = this.candidateCvDao.findAll();
+		return new SuccessDataResult<List<CandidateCv>>(candidateCv);
+		
 	}
-
-	@Override
-	public Result add(CandidateCv candidateCv) {
-		this.candidateCvDao.save(candidateCv);
-		return new SuccessResult("candidate cv eklendi");
-	}
-	
-
 }

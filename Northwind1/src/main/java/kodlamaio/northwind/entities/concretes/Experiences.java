@@ -39,7 +39,13 @@ public class Experiences {
 	@Column(name="is_working_now")
 	private boolean is_working_now;
 
-	@ManyToOne()
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="candidate_id")
+	private Candidate candidate;
+	
+	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name="candidate_cv_id")
 	private CandidateCv candidateCv;
 }

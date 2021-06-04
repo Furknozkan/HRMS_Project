@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.northwind.business.abstracts.AuthService;
 import kodlamaio.northwind.business.concretes.AuthManager;
 import kodlamaio.northwind.core.utilities.results.Result;
+import kodlamaio.northwind.entities.dtos.CvDto;
 import kodlamaio.northwind.entities.dtos.DepartmentAddDto;
 import kodlamaio.northwind.entities.dtos.ExperiencesAddDto;
 import kodlamaio.northwind.entities.dtos.LanguagesRegisterDto;
@@ -54,6 +55,12 @@ public class AuthControllers {
 		Result result = this.authManager.DepartmentAdd(departmentDto);
 		return ResponseEntity.ok(result);
 	}
+	/*
+	 * @PostMapping("cv/add") public ResponseEntity<?> CvAdd(
+	 * 
+	 * @Valid @RequestBody CvDto cvDto){ Result result = this.authManager.Cv(cvDto);
+	 * return ResponseEntity.ok(result); }
+	 */
 	
 	
 }

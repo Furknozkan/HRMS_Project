@@ -8,6 +8,7 @@ import kodlamaio.northwind.entities.concretes.CandidateCv;
 
 public interface CandidateCvService {
 	DataResult<List<CandidateCv>> getAll();
-	Result add(CandidateCv candidateCv);
+	DataResult<List<CandidateCv>> getByCandidate_id(int candidate);
+	
 
 }

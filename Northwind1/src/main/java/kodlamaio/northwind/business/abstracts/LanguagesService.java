@@ -9,6 +9,7 @@ import kodlamaio.northwind.entities.dtos.LanguagesRegisterDto;
 
 public interface LanguagesService {
 	DataResult<List<Languages>> getAll();
+	DataResult<List<Languages>> getByCandidate_id(int candidate_id);
 	Result add(Languages languages);
 	
 	
