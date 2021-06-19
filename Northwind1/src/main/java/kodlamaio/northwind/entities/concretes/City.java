@@ -28,7 +28,7 @@ public class City {
 	private int city_id;
 	
 	@Column(name="name")
-	private String name;
+	private String cityName;
 	
 
 
