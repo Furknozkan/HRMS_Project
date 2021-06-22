@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,21 +20,23 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="cities")
+@Table(name="work_time")
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
-public class City {
-	@Id
-	@GeneratedValue
-	@Column(name="city_id")
-	private int city_id;
+public class WorkTime {
 	
-	@Column(name="name")
-	private String cityName;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="work_time_id")
+	private int workTimeId;
+	
+	@Column(name="work_time_name")
+	private String workTimeName;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="city")
+	@OneToMany(mappedBy="workTime")
 	private List<JobPosting> jobPostings;
-
+	
+	
 
 }

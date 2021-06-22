@@ -68,7 +68,12 @@ public class JobPosting {
 	@JoinColumn(name = "job_id")
 	private Job job;
 	
+	@ManyToOne()
+	@JoinColumn(name="work_place_id")
+	private WorkPlace workPlace;
 	
-	
+	@ManyToOne()
+	@JoinColumn(name="work_time_id")
+	private WorkTime workTime;
 	
 }
