@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.northwind.business.abstracts.AuthService;
 import kodlamaio.northwind.business.abstracts.CandidateService;
-import kodlamaio.northwind.business.abstracts.CvDtoService;
 import kodlamaio.northwind.business.abstracts.DepartmentService;
 import kodlamaio.northwind.business.abstracts.ExperiencesService;
 import kodlamaio.northwind.business.abstracts.LanguagesService;
@@ -17,7 +16,6 @@ import kodlamaio.northwind.entities.concretes.Department;
 import kodlamaio.northwind.entities.concretes.Experiences;
 import kodlamaio.northwind.entities.concretes.Languages;
 import kodlamaio.northwind.entities.concretes.School;
-import kodlamaio.northwind.entities.dtos.CvDto;
 import kodlamaio.northwind.entities.dtos.DepartmentAddDto;
 import kodlamaio.northwind.entities.dtos.ExperiencesAddDto;
 import kodlamaio.northwind.entities.dtos.LanguagesRegisterDto;
@@ -31,7 +29,6 @@ public class AuthManager implements AuthService{
 	private ExperiencesService experiencesService;
 	private DepartmentService departmentService;
 	private CandidateService candidateService;
-	private CvDtoService cvDtoService;
 	
 	
 	@Autowired
@@ -42,7 +39,6 @@ public class AuthManager implements AuthService{
 		this.experiencesService = experiencesService;
 		this.departmentService = departmentService;
 		this.candidateService = candidateService;
-		this.cvDtoService = cvDtoService;
 	}
 	
 	@Override
