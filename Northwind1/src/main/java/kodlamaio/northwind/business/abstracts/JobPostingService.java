@@ -10,6 +10,8 @@ import kodlamaio.northwind.entities.concretes.JobPosting;
 public interface JobPostingService {
 	DataResult<List<JobPosting>> getAll();
 	DataResult<List<JobPosting>> getAllSorted();
+	DataResult<List<JobPosting>> getByEnable();
+	DataResult<List<JobPosting>> getByEnable(int pageNo, int pageSize);
 	DataResult<JobPosting> getByCompanyName(String companyName);
 	
 	Result add(JobPosting jobPosting);

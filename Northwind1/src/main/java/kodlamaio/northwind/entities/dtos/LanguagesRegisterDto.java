@@ -9,7 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LanguagesRegisterDto {
 	private int id;
+	private int candidate_cv_id;
+	private int candidate_id;
 	private String languages;
 	private String level;
+	
 
 }

@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -30,14 +31,20 @@ public class SchoolDepartment {
 	@Column(name="school_departments_id")
 	private int schoolDepartmentId;
 	
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School school;
 	
+	
+	
 	@ManyToOne 
 	@JoinColumn(name="department_id")
 	private Department department;
-	
+
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "schoolDepartment")
 	private List<CandidateSchoolDepartment> candidateSchoolDepartments;
 

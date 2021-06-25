@@ -44,7 +44,7 @@ public class School {
 	@Column(name="date_of_graduation")
 	private LocalDate dateOfGraduation;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "school")
 	private List<SchoolDepartment> schoolDepartments;
 	

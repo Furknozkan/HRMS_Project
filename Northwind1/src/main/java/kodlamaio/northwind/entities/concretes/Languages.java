@@ -25,6 +25,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="languages")
 public class Languages {
+	
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="languages_id")

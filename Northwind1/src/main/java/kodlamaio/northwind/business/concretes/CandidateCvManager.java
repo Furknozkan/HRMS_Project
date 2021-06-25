@@ -39,4 +39,14 @@ public class CandidateCvManager implements CandidateCvService{
 		return new SuccessDataResult<List<CandidateCv>>(candidateCv);
 		
 	}
+
+
+	@Override
+	public Result add(CandidateCv candidateCv) {
+		this.candidateCvDao.save(candidateCv);
+		return new SuccessResult("Candidate Cv eklendi");
+	}
+
+
+	
 }

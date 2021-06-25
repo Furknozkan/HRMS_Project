@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.northwind.business.abstracts.CandidateCvService;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
-import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.entities.concretes.CandidateCv;
 
 @RestController
@@ -30,10 +31,18 @@ public class CandidateCvControllers {
 		return this.candidateCvService.getAll(); 
 	}
 	
+	@PostMapping("/add")
+	public Result add(@RequestBody CandidateCv candidateCv) {
+		return this.candidateCvService.add(candidateCv);
+	}
+	
+	
+	
 	@GetMapping("/getByCandidate_id")
 	public DataResult<List<CandidateCv>> getByCandidate_id(@RequestParam int candidate){
 		return this.candidateCvService.getByCandidate_id(candidate);
 	}
+	
 	
 	
 }

@@ -32,7 +32,17 @@ public class JobsPostingController {
 	public DataResult<List<JobPosting>> getAll(){
 		return this.jobPostingService.getAll();
 	}
+	
+	@GetMapping("/getByEnable")
+	public DataResult<List<JobPosting>> getByEnable(){
+		return this.jobPostingService.getByEnable();
+	}
 
+	@GetMapping("/getByEnablePage")
+	public DataResult<List<JobPosting>> getByEnable(int pageNo, int pageSize) {
+		return this.jobPostingService.getByEnable(pageNo - 1, pageSize);
+	}
+	
 	@PostMapping("/add")
 	public Result add(@RequestBody JobPosting jobPosting) {
 		return this.jobPostingService.add(jobPosting);

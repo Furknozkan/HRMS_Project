@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,20 @@ public class JobPostingManager implements JobPostingService{
 		
 		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAll(),"datalar listelendi");
 	}
+	
+	@Override
+	public DataResult<List<JobPosting>> getByEnable() {
+		List<JobPosting> result = this.jobPostingDao.getByEnableTrue();
+		return new SuccessDataResult<List<JobPosting>>(result,"data listelendi");
+	}
+	
+	@Override
+	public DataResult<List<JobPosting>> getByEnable(int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo, pageSize);
+		List<JobPosting> result = this.jobPostingDao.getByEnableTrue(pageable);
+		return new SuccessDataResult<List<JobPosting>>(result,"data listelendi");
+	}
+	
 
 	@Override
 	public Result add(JobPosting jobPosting) {
@@ -105,6 +121,10 @@ public class JobPostingManager implements JobPostingService{
 		this.jobPostingDao.save(Result);
 		return new SuccessResult("başarılı");
 	}
+
+	
+
+	
 
 	
 	

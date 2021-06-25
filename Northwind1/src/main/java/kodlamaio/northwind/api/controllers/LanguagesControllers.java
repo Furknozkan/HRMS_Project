@@ -43,6 +43,11 @@ public class LanguagesControllers {
 		return this.languagesService.getAll();
 	}
 	
+	@PostMapping("/add")
+	public Result add(@RequestBody Languages languages) {
+		return this.languagesService.add(languages);
+	}
+	
 	
 	
 	

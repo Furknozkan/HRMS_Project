@@ -12,6 +12,7 @@ import kodlamaio.northwind.business.abstracts.SchoolService;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.entities.concretes.Candidate;
+import kodlamaio.northwind.entities.concretes.CandidateCv;
 import kodlamaio.northwind.entities.concretes.Department;
 import kodlamaio.northwind.entities.concretes.Experiences;
 import kodlamaio.northwind.entities.concretes.Languages;
@@ -49,6 +50,7 @@ public class AuthManager implements AuthService{
 				languagesDto.getLevel(),
 				null,
 				null
+				
 				));
 		
 		return new SuccessResult("languages eklendi");
