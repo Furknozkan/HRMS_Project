@@ -48,5 +48,13 @@ public class CandidateCvManager implements CandidateCvService{
 	}
 
 
+	@Override
+	public Result update(int candidateCvId, CandidateCv candidateCv) {
+		CandidateCv result = this.candidateCvDao.getOne(candidateCvId);
+		this.candidateCvDao.save(result);
+		return new SuccessResult("başarılı");
+	}
+
+
 	
 }
