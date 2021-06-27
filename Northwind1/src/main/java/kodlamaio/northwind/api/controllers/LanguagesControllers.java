@@ -7,10 +7,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.models.Response;
@@ -20,8 +24,10 @@ import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.entities.concretes.Languages;
+import kodlamaio.northwind.entities.concretes.School;
 import kodlamaio.northwind.entities.dtos.LanguagesRegisterDto;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/languagesService")
 public class LanguagesControllers {
@@ -48,7 +54,20 @@ public class LanguagesControllers {
 		return this.languagesService.add(languages);
 	}
 	
+	@DeleteMapping("/delete")
+	public Result delete(@RequestParam int languagesId) {
+		return this.languagesService.delete(languagesId);
+	}
 	
+	
+	
+	@PutMapping("/update")
+	public Result update(
+			@RequestParam("languagesId") int languagesId,
+			@RequestBody Languages languages
+			) {
+		return this.languagesService.update(languagesId, languages);
+	}
 	
 	
 

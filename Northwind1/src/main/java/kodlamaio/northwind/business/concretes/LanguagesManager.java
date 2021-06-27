@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kodlamaio.northwind.business.abstracts.LanguagesService;
 import kodlamaio.northwind.core.utilities.results.DataResult;
@@ -47,6 +48,22 @@ public class LanguagesManager implements LanguagesService{
 	public DataResult<List<Languages>> getByCandidate_id(int candidate_id) {
 		List<Languages> result =  this.languagesDao.getByCandidate_id(candidate_id);
 		return new SuccessDataResult<List<Languages>>(result);
+	}
+
+
+
+	@Override
+	public Result delete(int languagesId) {
+		this.languagesDao.deleteById(languagesId);
+		return new SuccessResult("Languages Silindi");
+	}
+
+
+
+	@Override
+	public Result update(int languagesId, Languages languages) {
+		this.languagesDao.save(languages);
+		return new SuccessResult("languages bilgileri güncellendi");
 	}
 
 }

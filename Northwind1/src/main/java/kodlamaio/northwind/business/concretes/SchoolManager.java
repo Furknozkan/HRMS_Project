@@ -38,4 +38,20 @@ public class SchoolManager implements SchoolService{
 		return new SuccessResult("school eklendi");
 	}
 
+
+
+	@Override
+	public Result update(int schoolId, School school) {
+		this.schoolDao.save(school);
+		return new SuccessResult("school bilgileri güncellendi");
+	}
+
+
+
+	@Override
+	public Result delete(int schoolId) {
+		this.schoolDao.deleteById(schoolId);
+		return new SuccessResult("school bilgileri silindi");
+	}
+
 }

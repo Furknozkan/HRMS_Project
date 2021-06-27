@@ -79,6 +79,21 @@ public class CandidateManager implements CandidateService{
 		return new SuccessResult("candidate eklendi");
 	}
 	
+	@Override
+	public Result delete(int candidateId) {
+		this.candidateDao.deleteById(candidateId);
+		return new SuccessResult("candidate silindi");
+	}
+
+	@Override
+	public Result update(int candidateId, Candidate candidate) {
+		this.candidateDao.save(candidate);
+		return new SuccessResult("candidate güncellendi");
+	}
+
+	
+	
+	
 	private boolean firstNameChecker(Candidate candidate) {
 		if(candidate.getFirstName().isBlank() || candidate.getFirstName() == null) {
 			return false ;
@@ -108,6 +123,7 @@ public class CandidateManager implements CandidateService{
 		return true;
 	}
 
+	
 	
 	
 }

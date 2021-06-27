@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import kodlamaio.northwind.entities.dtos.ExperiencesAddDto;
 import kodlamaio.northwind.entities.dtos.LanguagesRegisterDto;
 import kodlamaio.northwind.entities.dtos.SchoolRegisterDto;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/authController")
 public class AuthControllers {

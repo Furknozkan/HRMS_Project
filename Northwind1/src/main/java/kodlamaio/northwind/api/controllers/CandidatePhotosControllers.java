@@ -2,6 +2,7 @@ package kodlamaio.northwind.api.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.entities.concretes.Candidate;
 import kodlamaio.northwind.entities.concretes.CandidatePhoto;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/candidatePhotoController")
 public class CandidatePhotosControllers {

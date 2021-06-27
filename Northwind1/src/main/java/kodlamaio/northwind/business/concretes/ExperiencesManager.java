@@ -45,4 +45,16 @@ public class ExperiencesManager implements ExperiencesService{
 
 	}
 
+	@Override
+	public Result delete(int experiencesId) {
+		this.experiencesDao.deleteById(experiencesId);
+		return new SuccessResult("experiences silindi");
+	}
+
+	@Override
+	public Result update(int experiencesId, Experiences experiences) {
+		this.experiencesDao.save(experiences);
+		return new SuccessResult("experiences güncellendi");
+	}
+
 }

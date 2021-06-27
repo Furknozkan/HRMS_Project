@@ -11,4 +11,6 @@ public interface ExperiencesService {
 	DataResult<List<Experiences>> getAll();
 	DataResult<List<Experiences>> getAllSorted();
 	Result add(Experiences experiences);
+	Result delete(int experiencesId);
+	Result update(int experiencesId, Experiences experiences);
 }

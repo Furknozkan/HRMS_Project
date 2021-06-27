@@ -11,6 +11,8 @@ public interface LanguagesService {
 	DataResult<List<Languages>> getAll();
 	DataResult<List<Languages>> getByCandidate_id(int candidate_id);
 	Result add(Languages languages);
+	Result delete(int languagesId);
+	Result update(int languagesId, Languages languages);
 	
 	
 
