@@ -11,6 +11,7 @@ import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.SchoolDao;
+import kodlamaio.northwind.entities.concretes.Languages;
 import kodlamaio.northwind.entities.concretes.School;
 
 @Service
@@ -52,6 +53,14 @@ public class SchoolManager implements SchoolService{
 	public Result delete(int schoolId) {
 		this.schoolDao.deleteById(schoolId);
 		return new SuccessResult("school bilgileri silindi");
+	}
+
+
+
+	@Override
+	public DataResult<List<School>> getByCandidate_id(int candidate_id) {
+		List<School> result =  this.schoolDao.getByCandidate_id(candidate_id);
+		return new SuccessDataResult<List<School>>(result);
 	}
 
 }

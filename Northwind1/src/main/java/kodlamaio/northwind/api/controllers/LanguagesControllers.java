@@ -23,6 +23,7 @@ import kodlamaio.northwind.business.concretes.LanguagesManager;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
+import kodlamaio.northwind.entities.concretes.CandidateCv;
 import kodlamaio.northwind.entities.concretes.Languages;
 import kodlamaio.northwind.entities.concretes.School;
 import kodlamaio.northwind.entities.dtos.LanguagesRegisterDto;
@@ -47,6 +48,11 @@ public class LanguagesControllers {
 	@GetMapping("/getall")
 	public DataResult<List<Languages>> getAll(){
 		return this.languagesService.getAll();
+	}
+	
+	@GetMapping("/getByCandidate_id")
+	public DataResult<List<Languages>> getByCandidate_id(@RequestParam int candidate){
+		return this.languagesService.getByCandidate_id(candidate);
 	}
 	
 	@PostMapping("/add")

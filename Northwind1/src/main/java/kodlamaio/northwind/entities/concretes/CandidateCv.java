@@ -45,22 +45,25 @@ public class CandidateCv {
 	@Column(name="picture_url")
 	private String pictureUrl;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "candidate_id")
 	private Candidate candidate;
 
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "candidateCv")
 	private List<Languages> languages;
 	
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "candidateCv")
 	private List<School> schools;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "candidateCv")
 	private List<Experiences> experiences;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "candidateCv")
 	private List<Department> departments;
 }

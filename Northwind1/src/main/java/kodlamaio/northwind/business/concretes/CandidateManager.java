@@ -17,6 +17,7 @@ import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.CandidateDao;
 import kodlamaio.northwind.entities.abstracts.User;
 import kodlamaio.northwind.entities.concretes.Candidate;
+import kodlamaio.northwind.entities.concretes.CandidateCv;
 import kodlamaio.northwind.entities.concretes.Employers;
 import kodlamaio.northwind.entities.concretes.JobPosting;
 
@@ -40,6 +41,8 @@ public class CandidateManager implements CandidateService{
 		return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(),"Data listelendi");
 		
 	}
+	
+	
 
 	@Override
 	public Result add(Candidate candidate) {
@@ -122,6 +125,14 @@ public class CandidateManager implements CandidateService{
 		}
 		return true;
 	}
+
+	@Override
+	public DataResult<List<Candidate>> getByid(int id) {
+		List<Candidate> candidate = this.candidateDao.getByid(id);
+		return new SuccessDataResult<List<Candidate>>(candidate);
+	}
+
+	
 
 	
 	

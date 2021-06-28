@@ -17,6 +17,7 @@ import kodlamaio.northwind.business.abstracts.SchoolService;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.entities.concretes.JobPosting;
+import kodlamaio.northwind.entities.concretes.Languages;
 import kodlamaio.northwind.entities.concretes.School;
 
 @CrossOrigin
@@ -52,6 +53,11 @@ public class SchoolControllers {
 	@DeleteMapping("/delete")
 	public Result delete(@RequestParam int schoolId) {
 		return this.schoolService.delete(schoolId);
+	}
+	
+	@GetMapping("/getByCandidate_id")
+	public DataResult<List<School>> getByCandidate_id(@RequestParam int candidate){
+		return this.schoolService.getByCandidate_id(candidate);
 	}
 	
 }

@@ -19,6 +19,7 @@ import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.entities.concretes.Candidate;
 import kodlamaio.northwind.entities.concretes.Experiences;
+import kodlamaio.northwind.entities.concretes.Languages;
 import kodlamaio.northwind.entities.concretes.School;
 
 @CrossOrigin
@@ -40,6 +41,10 @@ public class ExperiencesControllers {
 	public DataResult<List<Experiences>> getAll(){
 		return this.experiencesService.getAll();
 		
+	}
+	@GetMapping("/getByCandidate_id")
+	public DataResult<List<Experiences>> getByCandidate_id(@RequestParam int candidate){
+		return this.experiencesService.getByCandidate_id(candidate);
 	}
 	
 	

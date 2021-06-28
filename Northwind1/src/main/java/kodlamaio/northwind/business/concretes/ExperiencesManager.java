@@ -14,6 +14,7 @@ import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.ExperiencesDao;
 import kodlamaio.northwind.entities.concretes.Candidate;
 import kodlamaio.northwind.entities.concretes.Experiences;
+import kodlamaio.northwind.entities.concretes.Languages;
 
 @Service
 public class ExperiencesManager implements ExperiencesService{
@@ -55,6 +56,12 @@ public class ExperiencesManager implements ExperiencesService{
 	public Result update(int experiencesId, Experiences experiences) {
 		this.experiencesDao.save(experiences);
 		return new SuccessResult("experiences güncellendi");
+	}
+
+	@Override
+	public DataResult<List<Experiences>> getByCandidate_id(int candidate_id) {
+		List<Experiences> result =  this.experiencesDao.getByCandidate_id(candidate_id);
+		return new SuccessDataResult<List<Experiences>>(result);
 	}
 
 }

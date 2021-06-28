@@ -12,6 +12,7 @@ import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.DepartmentDao;
 import kodlamaio.northwind.entities.concretes.Department;
+import kodlamaio.northwind.entities.concretes.Experiences;
 
 @Service
 public class DepartmentManager implements DepartmentService{
@@ -33,6 +34,24 @@ public class DepartmentManager implements DepartmentService{
 	public Result add(Department department) {
 		this.departmentDao.save(department);
 		return new SuccessResult("department eklendi");
+	}
+
+	@Override
+	public DataResult<List<Department>> getByCandidate_id(int candidate_id) {
+		List<Department> result =  this.departmentDao.getByCandidate_id(candidate_id);
+		return new SuccessDataResult<List<Department>>(result);
+	}
+
+	@Override
+	public Result delete(int departmentId) {
+		this.departmentDao.deleteById(departmentId);
+		return new SuccessResult("department silindi");
+	}
+
+	@Override
+	public Result update(int departmentId, Department department) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

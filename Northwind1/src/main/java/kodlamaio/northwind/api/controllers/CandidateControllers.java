@@ -16,6 +16,7 @@ import kodlamaio.northwind.business.abstracts.CandidateService;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.entities.concretes.Candidate;
+import kodlamaio.northwind.entities.concretes.CandidateCv;
 import kodlamaio.northwind.entities.concretes.School;
 
 @CrossOrigin
@@ -38,6 +39,10 @@ public class CandidateControllers {
 		
 	}
 	
+	@GetMapping("/getByCandidate_id")
+	public DataResult<List<Candidate>> getByid(@RequestParam int id){
+		return this.candidateService.getByid(id);
+	}
 
 	
 	@PostMapping("/add")

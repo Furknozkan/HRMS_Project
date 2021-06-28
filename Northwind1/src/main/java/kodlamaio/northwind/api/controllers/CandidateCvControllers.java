@@ -42,7 +42,10 @@ public class CandidateCvControllers {
 	@PutMapping("/update")
 	public Result update(
 			@RequestParam("candidateCvId") int candidateCvId,
-			@RequestBody CandidateCv candidateCv) {
+			@RequestBody CandidateCv candidateCv)
+	{
+		candidateCv.setOverLetter(candidateCv.getOverLetter());
+		candidateCv.setPictureUrl(candidateCv.getPictureUrl());
 		return this.candidateCvService.update(candidateCvId, candidateCv);
 	}
 	
