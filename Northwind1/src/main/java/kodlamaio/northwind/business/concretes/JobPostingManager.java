@@ -17,6 +17,7 @@ import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
 import kodlamaio.northwind.dataAccess.abstracts.JobPostingDao;
 import kodlamaio.northwind.entities.concretes.JobPosting;
+import kodlamaio.northwind.entities.dtos.JobPostingsFilterDto;
 
 @Service
 public class JobPostingManager implements JobPostingService{
@@ -46,6 +47,18 @@ public class JobPostingManager implements JobPostingService{
 		Pageable pageable = PageRequest.of(pageNo, pageSize);
 		List<JobPosting> result = this.jobPostingDao.getByEnableTrue(pageable);
 		return new SuccessDataResult<List<JobPosting>>(result,"data listelendi");
+	}
+	
+	@Override
+	public DataResult<List<JobPosting>> getByEnableAndPageNumberAndFilter(int pageNo, int pageSize,
+			JobPostingsFilterDto jobPostingsFilter) {
+		
+		Pageable pageable = PageRequest.of(pageNo -1, pageSize);
+
+		
+		return new SuccessDataResult<List<JobPosting>>
+		(this.jobPostingDao.getByFilter(jobPostingsFilter, pageable).getContent(),
+				this.jobPostingDao.getByFilter(jobPostingsFilter, pageable).getTotalPages() + "");
 	}
 	
 
@@ -121,6 +134,8 @@ public class JobPostingManager implements JobPostingService{
 		this.jobPostingDao.save(Result);
 		return new SuccessResult("başarılı");
 	}
+
+
 
 	
 
