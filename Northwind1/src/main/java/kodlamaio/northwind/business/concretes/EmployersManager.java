@@ -169,6 +169,8 @@ public class EmployersManager implements EmployersService{
 		employer.setEnableWaitingUpdate(true);
 		return new SuccessResult("güncelleme için onay bekleniyor");
 	}
+	
+	//commit
 	@Override
 	public Result verifyUpdate(int employerUpdateId) {
 		if(!this.employerUpdateDao.existsById(employerUpdateId)) {
