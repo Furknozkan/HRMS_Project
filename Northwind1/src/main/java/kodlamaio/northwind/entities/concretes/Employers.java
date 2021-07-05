@@ -32,6 +32,9 @@ public class Employers extends User{
 	
 	@Column(name="phone_number")
 	private String phoneNumber;
+	
+	@Column(name="enable_update")
+	private boolean enableWaitingUpdate;
 
 
 

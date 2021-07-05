@@ -1,6 +1,7 @@
 package kodlamaio.northwind.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,21 +9,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.northwind.business.abstracts.EmployersService;
+import kodlamaio.northwind.business.abstracts.UsersService;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.ErrorDataResult;
+import kodlamaio.northwind.core.utilities.results.ErrorResult;
 import kodlamaio.northwind.core.utilities.results.Result;
 import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.core.utilities.results.SuccessResult;
+import kodlamaio.northwind.dataAccess.abstracts.EmployerUpdateDao;
 import kodlamaio.northwind.dataAccess.abstracts.EmployersDao;
+import kodlamaio.northwind.entities.concretes.EmployerUpdate;
 import kodlamaio.northwind.entities.concretes.Employers;
 @Service
 public class EmployersManager implements EmployersService{
 	private EmployersDao employersDao;
+	private UsersService userService;
+	private EmployerUpdateDao employerUpdateDao;
+	
 	
 	@Autowired
-	public EmployersManager(EmployersDao employersDao) {
+	public EmployersManager(EmployersDao employersDao, UsersService userService, EmployerUpdateDao employerUpdateDao) {
 		super();
 		this.employersDao=employersDao;
+		this.userService=userService;
+		this.employerUpdateDao=employerUpdateDao;
 		
 	}
 	@Override
@@ -31,6 +41,10 @@ public class EmployersManager implements EmployersService{
 		
 		return new SuccessDataResult<List<Employers>>(this.employersDao.findAll(),"datalar listelendi");
 	}
+	
+	
+	
+	
 	@Override
 	public Result add(Employers employers) {
 		
@@ -124,6 +138,56 @@ public class EmployersManager implements EmployersService{
 		}
 		return true;
 		
+	}
+	
+	@Override
+	public DataResult<Employers> getById(int id) {
+		
+		if(this.employersDao.existsById(id)) {
+			return new SuccessDataResult<Employers>(this.employersDao.getById(id),"data listelendi");
+		}
+		return new ErrorDataResult<>("İşveren bulunamadı");
+		}
+	
+	@Override
+	public Employers findByEmployerId(int id) {
+		// TODO Auto-generated method stub
+		return this.employersDao.getById(id);
+	}
+	
+	@Override
+	public Employers getByEmployerId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Result update(EmployerUpdate employerUpdate) {
+		employerUpdate.setId(0);
+		
+		Employers employer = this.employersDao.getById(employerUpdate.getEmployerId());
+		this.employerUpdateDao.save(employerUpdate);
+		employer.setEnableWaitingUpdate(true);
+		return new SuccessResult("güncelleme için onay bekleniyor");
+	}
+	@Override
+	public Result verifyUpdate(int employerUpdateId) {
+		if(!this.employerUpdateDao.existsById(employerUpdateId)) {
+			return new ErrorResult("güncelleme talebi bulunamadı");
+			
+		}
+		EmployerUpdate employerUpdate = this.employerUpdateDao.getById(employerUpdateId);
+		Employers employer = this.employersDao.getById(employerUpdate.getEmployerId());
+		
+		employerUpdate.setVerifyed(true);
+		this.employerUpdateDao.save(employerUpdate);
+		
+		employer.setEmailAddress(employerUpdate.getEmployerUpdate().getEmailAddress());
+		employer.setCompanyName(employerUpdate.getEmployerUpdate().getCompanyName());
+		employer.setPhoneNumber(employerUpdate.getEmployerUpdate().getPhoneNumber());
+		employer.setWebAddress(employerUpdate.getEmployerUpdate().getWebAddress());
+		employer.setEnableWaitingUpdate(false);
+		this.employersDao.save(employer);
+		return new SuccessResult("Bilgiler Güncellendi");
 	}
 	
 
