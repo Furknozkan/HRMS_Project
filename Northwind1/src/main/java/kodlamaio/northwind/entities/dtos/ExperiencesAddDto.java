@@ -15,5 +15,7 @@ public class ExperiencesAddDto {
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private boolean isWorkingNow;
+	private String companyName;
+	private String title;
 
 }

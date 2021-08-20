@@ -38,6 +38,12 @@ public class Experiences {
 	
 	@Column(name="is_working_now")
 	private boolean is_working_now;
+	
+	@Column(name="company_name")
+	private String companyName;
+	
+	@Column(name="title")
+	private String title;
 
 	@JsonIgnore
 	@ManyToOne

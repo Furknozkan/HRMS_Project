@@ -84,6 +84,8 @@ public class AuthManager implements AuthService{
 			experiencesDto.getStartDate(),
 			experiencesDto.getEndDate(),
 			experiencesDto.isWorkingNow(),
+			experiencesDto.getCompanyName(),
+			experiencesDto.getTitle(),
 			null,
 			null
 			
