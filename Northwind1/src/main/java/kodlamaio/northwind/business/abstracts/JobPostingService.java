@@ -4,6 +4,7 @@ import java.util.List;
 
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
+import kodlamaio.northwind.core.utilities.results.SuccessDataResult;
 import kodlamaio.northwind.entities.concretes.JobPosting;
 import kodlamaio.northwind.entities.dtos.JobPostingsFilterDto;
 
@@ -15,6 +16,7 @@ public interface JobPostingService {
 	DataResult<List<JobPosting>> getByEnable(int pageNo, int pageSize);
 	DataResult<JobPosting> getByCompanyName(String companyName);
 	DataResult<List<JobPosting>> getByEnableAndPageNumberAndFilter(int pageNo, int pageSize, JobPostingsFilterDto jobPostingsFilter);
+	DataResult<List<JobPosting>> getByEmployerId(int employerId);
 
 	Result add(JobPosting jobPosting);
 	Result delete(JobPosting jobPosting);

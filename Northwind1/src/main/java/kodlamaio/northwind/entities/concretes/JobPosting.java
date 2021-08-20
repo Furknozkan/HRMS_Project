@@ -60,6 +60,9 @@ public class JobPosting {
 	@Column(name="enable")
 	private boolean enable = false;
 	
+	@Column(name="avatar_url")
+	private String avatarUrl;
+	
 	@ManyToOne() 
 	@JoinColumn(name = "city_id")
 	private City city;
@@ -76,4 +79,7 @@ public class JobPosting {
 	@JoinColumn(name="work_time_id")
 	private WorkTime workTime;
 	
+	@ManyToOne()
+	@JoinColumn(name="employer_id")
+	private Employers employer;
 }

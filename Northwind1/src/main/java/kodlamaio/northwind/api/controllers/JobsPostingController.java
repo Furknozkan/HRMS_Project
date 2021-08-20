@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.northwind.business.abstracts.JobPostingService;
 import kodlamaio.northwind.core.utilities.results.DataResult;
 import kodlamaio.northwind.core.utilities.results.Result;
+import kodlamaio.northwind.entities.concretes.Employers;
 import kodlamaio.northwind.entities.concretes.JobPosting;
 import kodlamaio.northwind.entities.dtos.JobPostingsFilterDto;
 import kodlamaio.northwind.business.concretes.JobPostingManager;
@@ -77,4 +78,10 @@ public class JobsPostingController {
     public Result getByEnableAndPageNumberAndFilter(@RequestParam int pageNo,@RequestParam int pageSize,@RequestBody JobPostingsFilterDto jobPostingsFilter){
         return jobPostingService.getByEnableAndPageNumberAndFilter(pageNo, pageSize, jobPostingsFilter);
     }
+	
+	@GetMapping("/getByEmployerId")
+	public DataResult<List<JobPosting>> getByEmployerId(@RequestParam int employerId){
+		return jobPostingService.getByEmployerId(employerId);
+		
+	}
 }

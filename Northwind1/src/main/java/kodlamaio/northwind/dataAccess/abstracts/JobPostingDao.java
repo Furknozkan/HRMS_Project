@@ -14,7 +14,7 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer>{
 	
 	
 	JobPosting getByCompanyName(String companyName);
-	
+	List<JobPosting> getByEmployerId(int employerId);
 	List<JobPosting> getByEnableTrue();
 	List<JobPosting> getByEnableTrue(Pageable pageable);
 	
@@ -25,6 +25,8 @@ public interface JobPostingDao extends JpaRepository<JobPosting, Integer>{
 			+" and j.enable=true"
 			)
 		public Page<JobPosting> getByFilter(@Param("filter") JobPostingsFilterDto jobPostingsFilter, Pageable pageable);
+
+	
 
 	
 }

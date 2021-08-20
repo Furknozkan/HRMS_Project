@@ -43,6 +43,13 @@ public class JobPostingManager implements JobPostingService{
 	}
 	
 	@Override
+	public DataResult<List<JobPosting>> getByEmployerId(int employerId) {
+	List<JobPosting> result = this.jobPostingDao.getByEmployerId(employerId);
+	return new SuccessDataResult<List<JobPosting>>(result,"data listelendi");
+			
+	}
+	
+	@Override
 	public DataResult<List<JobPosting>> getByEnable(int pageNo, int pageSize) {
 		Pageable pageable = PageRequest.of(pageNo, pageSize);
 		List<JobPosting> result = this.jobPostingDao.getByEnableTrue(pageable);
@@ -134,6 +141,8 @@ public class JobPostingManager implements JobPostingService{
 		this.jobPostingDao.save(Result);
 		return new SuccessResult("başarılı");
 	}
+
+	
 
 
 
